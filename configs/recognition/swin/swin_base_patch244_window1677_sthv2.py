@@ -4,11 +4,11 @@ _base_ = [
 
 # dataset settings
 dataset_type = 'VideoDataset'
-data_root = 'data/sthv2/videos'
-data_root_val = 'data/sthv2/videos'
-ann_file_train = 'data/sthv2/sthv2_train_list_videos.txt'
-ann_file_val = 'data/sthv2/sthv2_val_list_videos.txt'
-ann_file_test = 'data/sthv2/sthv2_val_list_videos.txt'
+data_root = ''
+data_root_val = ''
+ann_file_train = '/home/tr248228/RP_EvT/EventTransformerActDect/trainPaths_13.txt'
+ann_file_val = '/home/tr248228/RP_EvT/EventTransformerActDect/valPaths_13.txt'
+ann_file_test = '/home/tr248228/RP_EvT/EventTransformerActDect/testPaths_13.txt'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_bgr=False)
 train_pipeline = [
@@ -114,15 +114,15 @@ find_unused_parameters = False
 
 
 # do not use mmdet version fp16
-fp16 = None
-optimizer_config = dict(
-    type="DistOptimizerHook",
-    update_interval=8,
-    grad_clip=None,
-    coalesce=True,
-    bucket_size_mb=-1,
-    use_fp16=True,
-)
+#fp16 = None
+#optimizer_config = dict(
+#    type="DistOptimizerHook",
+#    update_interval=8,
+#    grad_clip=None,
+#    coalesce=True,
+#    bucket_size_mb=-1,
+#    use_fp16=True,
+#)
 
 model=dict(backbone=dict(patch_size=(2,4,4), window_size=(16,7,7), drop_path_rate=0.4),
            cls_head=dict(num_classes=174),
